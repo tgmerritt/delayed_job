@@ -11,6 +11,7 @@ module Delayed
           options = args.extract_options!
           options[:payload_object] ||= args.shift
           options[:priority]       ||= Delayed::Worker.default_priority
+          options[:failed_at]      ||= nil
 
           if options[:queue].nil?
             if options[:payload_object].respond_to?(:queue_name)
